@@ -1,23 +1,23 @@
 #the mod name as displayed in-game
-displayName: "Java Mod Template"
+displayName: "氢气核心java"
 
 #the internal name of your mod
-name: "example-java-mod"
+name: "hc"
 
 #your name
-author: "You"
+author: "m9O"
 
 #the fully qualified main class of the mod
-main: "example.ExampleJavaMod"
+main: "hc.hcore"
 
 #the mod description as seen in the mod dialog
-description: "A Mindustry Java mod template."
+description: "氢气核心为一些mod提供前置"
 
 #the mod version
 version: 1.0
 
 #the minimum game build required to run this mod
-minGameVersion: 129
+minGameVersion: 136
 
 #this is a java mod
 java: true
