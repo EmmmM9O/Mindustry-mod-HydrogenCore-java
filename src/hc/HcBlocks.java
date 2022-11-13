@@ -61,7 +61,9 @@ public class HcBlocks{
         sr2= new StructureBlock("sr2",Need){{
             requirements(Category.logic, with(Items.graphite, 5, Items.copper, 5));
         }};
-        s3=new APIBlock("APIBlock");
+        s3=new APIBlock("APIBlock"){{
+            requirements(Category.logic, with(Items.graphite, 5, Items.copper, 5));
+        }};
         
     }
 }
