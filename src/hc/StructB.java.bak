@@ -1,0 +1,12 @@
+package hc;
+
+import mindustry.world.Block;
+
+public class StructB{
+    public Block block;
+    public int x;
+    public int y;
+    public StructB(bl,x1,y1){
+        x=x1;y=y1;block=bl;
+    }
+}
