@@ -56,7 +56,7 @@ public class HcBlocks{
         sr= new SelectBlock("sr",se){{
             requirements(Category.logic, with(Items.graphite, 5, Items.copper, 5));
         }};
-        StructB ae=new StructB(“duo”,0,1);
+        StructB ae=new StructB("duo",0,1);
         StructB[] Need={ae};
         sr2= new StructureBlock("sr2",Need){{
             requirements(Category.logic, with(Items.graphite, 5, Items.copper, 5));
