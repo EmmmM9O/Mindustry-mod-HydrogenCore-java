@@ -46,7 +46,7 @@ import static mindustry.type.ItemStack.*;
 public class HcBlocks{
     public static SelectBlock sr;
     public static StructureBlock sr2;
-    
+    public static APIBlock s3;
     public static void load(){
         Selects a=new Selects();
         a.icon="info";
@@ -61,5 +61,7 @@ public class HcBlocks{
         sr2= new StructureBlock("sr2",Need){{
             requirements(Category.logic, with(Items.graphite, 5, Items.copper, 5));
         }};
+        s3=new APIBlock("APIBlock");
+        
     }
 }
