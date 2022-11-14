@@ -13,12 +13,14 @@ import mindustry.mod.*;
 import mindustry.ui.dialogs.*;
 
 
+import java.util.HashMap;
+import java.util.Map;
 
 import static mindustry.Vars.*;
-
-
+import mindustry.world.Tile;
 
 public class hcore extends Mod{
+    public static Map<Tile,BuildMap> list=new HashMap<>();
     public hcore(){
         
         Log.info("Loaded HcMod constructor.");
@@ -54,7 +56,12 @@ public class hcore extends Mod{
     public void loadContent(){
         hc.HcBlocks.load();
         Log.info("test1");
+        Events.run(Trigger.update,()->{
+            if(Vars.state.isMenu()){
+                if(list.size()>0)list.clear();
+            }
 
+        });
     }
 
 }
