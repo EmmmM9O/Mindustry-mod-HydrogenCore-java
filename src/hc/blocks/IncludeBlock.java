@@ -1,6 +1,8 @@
 package hc.blocks;
 
+import hc.BuildMap;
 import hc.StructB;
+import hc.hcore;
 import mindustry.Vars;
 import mindustry.type.*;
 import mindustry.world.Block;
@@ -17,13 +19,34 @@ public class IncludeBlock extends StructureBlock{
         public StructB[] Apis;
         @Override
         public void BuildInit(){
+            int cnt=0;
+            Apis=new StructB[20];
             for(int i=0;i<NeedBlock.length;i++){
                 StructB a=NeedBlock[i];
+
                 if(a.block=="APIBlock"){
-                    Apis[Apis.length]= a;
-                    var str=world.tile((int)x/8+a.x,(int)y/8+a.y).build.config();
-                    Vars.ui.showLabel(str.toString(),10,x,y);
+
+                    Apis[cnt]= a;
+                    cnt++;
+                    var tile=world.tile((int)x/8+a.x,(int)y/8+a.y);
+                    BuildMap<APIBlock.APIBuild> block=hcore.list.<APIBlock.APIBuild>get(tile);
+                    APIBlock.APIBuild bu=block.build;
+                    bu.IsStruct=true;
+
+
+
                 }
+            }
+        }
+        @Override
+        public void MakeRun(){
+            for(int i=0;i<Apis.length;i++){
+                var a=Apis[i];
+
+                var tile=world.tile((int)x/8+a.x,(int)y/8+a.y);
+                BuildMap<APIBlock.APIBuild> block=hcore.list.get(tile);
+                APIBlock.APIBuild bu=block.build;
+                bu.IsStruct=true;
             }
         }
 

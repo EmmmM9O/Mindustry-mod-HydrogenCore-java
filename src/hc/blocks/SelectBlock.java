@@ -37,7 +37,10 @@ public class SelectBlock extends Block{
     }
     public class SelectBuild extends Building{
         public String SelectNow =new String();
-        
+        @Override
+        public void updateTile(){
+            hcore.list.put(tile,new <SelectBuild>BuildMap(this,tile));
+        }
         @Override
         public void drawSelect(){
             if(renderer.pixelator.enabled()) return;

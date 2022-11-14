@@ -48,8 +48,13 @@ public class StructureBlock extends SelectBlock{
 				Draw.color(Color.white);
 			}
 		}
+		public void MakeRun(){
+			Vars.ui.showLabel("[acid]test",1,x,y+8);
+		}
+
 		@Override
 		public void updateTile(){
+			super.updateTile();
 		    if(BuildOk){
 		        BuildTick++;
 		        if(BuildTick>=1000){
@@ -57,7 +62,7 @@ public class StructureBlock extends SelectBlock{
 		            ChickBuild(this);
 		            if(!BuildOk) return;
 		        }
-		        MakeRun(this);
+		        MakeRun();
 		    }
 		}
 		public void BuildInit(){}
@@ -76,9 +81,6 @@ public class StructureBlock extends SelectBlock{
 	    return true;
 	}
 
-	public void MakeRun(StructureBuild build){
-	    Vars.ui.showLabel("[acid]test",1,build.x,build.y+8);
-	}
 	public SelectFunc<StructureBuild> BuildRun=(build)->{
 	    if(ChickBuild(build)){
 	        build.BuildInit();
