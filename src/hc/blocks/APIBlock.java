@@ -21,9 +21,9 @@ public class APIBlock extends SelectBlock{
         public void draw(){
             super.draw();
             if (inoutMode)
-                Draw.rect(Core.atlas.find("input"),x+1,y+1,6,6);
-            else Draw.rect(Core.atlas.find("output"),x+1,y+1,6,6);
-            if (IsPower)  Draw.rect(Core.atlas.find("power"),x+1,y+1,6,6);
+                Draw.rect(Core.atlas.find("hc-input"),x+0.5f,y+1,7,7);
+            else Draw.rect(Core.atlas.find("hc-output"),x+0.5f,y+0.5f,7,7);
+            if (IsPower)  Draw.rect(Core.atlas.find("hc-power"),x+0.5f,y+0.5f,7,7);
             else if(IsItem) Draw.rect(item.uiIcon,x+1,y+1,6,6);
             else Draw.rect(liquid.uiIcon,x+1,y+1,5,5);
 
