@@ -71,7 +71,7 @@ public class SelectBlock extends Block{
                 Selects a=s[i];
                 table.button(a.icon,()->{
                     a.run.get(this);
-                    this.SelectNow=a.icon;
+                    SelectNow=a.icon;
                 });
                 
             }
