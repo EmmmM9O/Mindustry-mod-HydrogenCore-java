@@ -67,7 +67,9 @@ public class HcBlocks{
             requirements(Category.logic, with(Items.graphite, 5, Items.copper, 5));
         }};
         StructB[] Need2={new StructB("通用接口",0,1)};
-        Test1=new IncludeBlock("Test1",Need2);
+        Test1=new IncludeBlock("Test1",Need2){{
+            requirements(Category.logic, with(Items.graphite, 5, Items.copper, 5));
+        }};
 
     }
 }
