@@ -83,8 +83,9 @@ public class StructureBlock extends SelectBlock{
 
 	public SelectFunc<StructureBuild> BuildRun=(build)->{
 	    if(ChickBuild(build)){
+	         Vars.ui.showLabel("[acid]构建成功",1,build.x,build.y);
 	        build.BuildInit();
-	        Vars.ui.showLabel("[acid]构建成功",1,build.x,build.y);
+	        
 	        
 	    }else{
 	        Vars.ui.showLabel("[red]构建失败",1,build.x,build.y);

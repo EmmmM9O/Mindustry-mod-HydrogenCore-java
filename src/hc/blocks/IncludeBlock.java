@@ -17,9 +17,10 @@ public class IncludeBlock extends StructureBlock{
         public Item[] OutItem;
         public Liquid[] OutLiquid;
         public StructB[] Apis;
+        public int cnt;
         @Override
         public void BuildInit(){
-            int cnt=0;
+            cnt=0;
             Apis=new StructB[20];
             for(int i=0;i<NeedBlock.length;i++){
                 StructB a=NeedBlock[i];
@@ -40,7 +41,7 @@ public class IncludeBlock extends StructureBlock{
         }
         @Override
         public void MakeRun(){
-            for(int i=0;i<Apis.length;i++){
+            for(int i=0;i<cnt;i++){
                 var a=Apis[i];
 
                 var tile=world.tile((int)x/8+a.x,(int)y/8+a.y);
