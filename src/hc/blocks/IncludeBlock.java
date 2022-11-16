@@ -18,7 +18,37 @@ public class IncludeBlock extends StructureBlock{
         public Liquid[] OutLiquid;
         public StructB[] Apis;
         public int cnt;
-        
+        @Override
+
+        public void BuildInit(){
+
+            cnt=0;
+
+            Apis=new StructB[20];
+
+            for(int i=0;i<NeedBlock.length;i++){
+
+                StructB a=NeedBlock[i];
+
+                if(a.block=="APIBlock"){
+
+                    Apis[cnt]= a;
+
+                    cnt++;
+
+                    var tile=world.tile((int)x/8+a.x,(int)y/8+a.y);
+
+                    BuildMap<APIBlock.APIBuild> block=hcore.list.<APIBlock.APIBuild>get(tile);
+
+                    APIBlock.APIBuild bu=block.build;
+
+                    bu.IsStruct=true;
+
+                }
+
+            }
+
+        }
 
     }
     
