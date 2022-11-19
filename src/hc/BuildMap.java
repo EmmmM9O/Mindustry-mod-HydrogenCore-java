@@ -1,6 +1,6 @@
 package hc;
 import java.lang.ref.Reference;
-import java.lang.ref.SoftReference;.
+import java.lang.ref.SoftReference;
 import mindustry.gen.Building;
 import mindustry.world.Tile;
 public class BuildMap <T extends Building>{
