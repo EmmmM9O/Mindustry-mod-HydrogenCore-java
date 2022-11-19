@@ -20,7 +20,7 @@ import mindustry.world.meta.*;
 
 import static mindustry.Vars.*;
 
-public class SelectBlock extends Block{
+public class SelectBlock extends DataBlock{
     public Selects[] selects;
     public SelectBlock(String name,Selects[] s){
         super(name);
@@ -33,14 +33,11 @@ public class SelectBlock extends Block{
         selects=s;
         update=true;
         //config(String.class, (SelectBuild entity, String b) -> entity.SelectNow = b);
-  
+
     }
-    public class SelectBuild extends Building{
+    public class SelectBuild extends DataBlock.DataBuild{
         public String SelectNow =new String();
-        @Override
-        public void updateTile(){
-            hcore.list.put(tile,new <SelectBuild>BuildMap(this,tile));
-        }
+
         @Override
         public void drawSelect(){
             if(renderer.pixelator.enabled()) return;

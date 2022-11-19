@@ -8,6 +8,7 @@ import hc.blocks.SelectBlock;
 import mindustry.type.*;
 import mindustry.ui.dialogs.BaseDialog;
 import arc.util.io.*;
+import arc.util.Nullable;
 public class APIBlock extends SelectBlock{
     public class APIBuild extends SelectBlock.SelectBuild{
         public boolean inoutMode=false;
@@ -15,7 +16,9 @@ public class APIBlock extends SelectBlock{
         public boolean IsPower=true;
         public boolean IsItem=false;
         public boolean IsLiquid=false;
+        @Nullable
         public Liquid liquid;
+        @Nullable
         public Item item;
         @Override
         public void draw(){
@@ -24,8 +27,8 @@ public class APIBlock extends SelectBlock{
                 Draw.rect(Core.atlas.find("hc-input"),x+0.5f,y+1,7,7);
             else if(!IsPower)Draw.rect(Core.atlas.find("hc-output"),x+0.5f,y+0.5f,7,7);
             if (IsPower)  Draw.rect(Core.atlas.find("hc-power"),x+0.5f,y+0.5f,7,7);
-            else if(IsItem) Draw.rect(item.uiIcon,x+1,y+1,6,6);
-            else Draw.rect(liquid.uiIcon,x+1,y+1,5,5);
+            else if(IsItem&&item!=null) Draw.rect(item.uiIcon,x+1,y+1,6,6);
+            else if(liquid!=null)Draw.rect(liquid.uiIcon,x+1,y+1,5,5);
 
         }
         public void  ShowUi(){
@@ -83,6 +86,7 @@ public class APIBlock extends SelectBlock{
 
     public SelectFunc<APIBuild> ChangeMode=(build)->{
         build.inoutMode=!build.inoutMode;
+        build.IsPower=false;
     };
 
     public APIBlock(String name) {
