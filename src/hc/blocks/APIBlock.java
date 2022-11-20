@@ -61,7 +61,7 @@ public class APIBlock extends SelectBlock{
                     ui.hide();
                     ShowUi();
                 }).row();
-                if (StructTile.build==null||StructTile.cblock() instanceof IncludeBlock){
+                if (StructTile==null||StructTile.build==null||StructTile.cblock() instanceof IncludeBlock){
                     ui.cont.add("Structure Is Null");
                 }
                 else if (IsPower) {
