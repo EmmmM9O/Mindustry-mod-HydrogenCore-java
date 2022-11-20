@@ -29,7 +29,7 @@ public class IncludeBlock extends StructureBlock{
             for(int i=0;i<NeedBlock.length;i++){
                 StructB a=NeedBlock[i];
 
-                if(a.block=="APIBlock"){
+                if(a.block=="hc-通用接口"){
 
                     Apis[cnt]= a;
                     cnt++;
