@@ -24,9 +24,9 @@ public class APIBlock extends SelectBlock{
         public void draw(){
             super.draw();
             if (inoutMode&&!IsPower)
-                Draw.rect(Core.atlas.find("hc-input"),x+0.5f,y+1,7,7);
-            else if(!IsPower)Draw.rect(Core.atlas.find("hc-output"),x+0.5f,y+0.5f,7,7);
-            if (IsPower)  Draw.rect(Core.atlas.find("hc-power"),x+0.5f,y+0.5f,7,7);
+                Draw.rect(Core.atlas.find("hc-input"),x,y,8,8);
+            else if(!IsPower)Draw.rect(Core.atlas.find("hc-output"),x,y,8,8);
+            if (IsPower)  Draw.rect(Core.atlas.find("hc-power"),x+,y+,8,8);
             else if(IsItem&&item!=null) Draw.rect(item.uiIcon,x+1,y+1,6,6);
             else if(liquid!=null)Draw.rect(liquid.uiIcon,x+1,y+1,5,5);
 
@@ -38,26 +38,33 @@ public class APIBlock extends SelectBlock{
                     IsItem=true;
                     IsPower=false;
                     IsLiquid=false;
+                    ui::hide;
+                    ShowUi();
                 });
                 ui.button("Liquid",()->{
                     IsItem=false;
                     IsPower=false;
                     IsLiquid=true;
+                    ui::hide;
+                    ShowUi();
                 });
                 ui.button("Power",()->{
                     IsItem=false;
                     IsPower=true;
                     IsLiquid=false;
+                    ui::hide;
+                    ShowUi();
                 }).row();
                 if (IsPower) {
                     ui.cont.add("No choose ");
+                    
                 }else if (IsItem){
 
                 }
             }else{
                 ui.cont.add("No structure here").row();
-                ui.button("@ok",ui::hide).size(100f,50f);
             }
+            ui.button("@ok",ui::hide).size(100f,50f);
             ui.show();
         }
         public String config(){

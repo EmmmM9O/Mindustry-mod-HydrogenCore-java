@@ -34,8 +34,7 @@ public class IncludeBlock extends StructureBlock{
                     Apis[cnt]= a;
                     cnt++;
                     var tile=world.tile((int)x/8+a.x,(int)y/8+a.y);
-                    var bu=tile.build.<APIBlock.APIBuild>self();
-                    bu.IsStruct=true;
+                    tile.build.<APIBlock.APIBuild>self().IsStruct=true;
 
 
                 }
@@ -47,8 +46,7 @@ public class IncludeBlock extends StructureBlock{
                 var a=Apis[i];
 
                 var tile=world.tile((int)x/8+a.x,(int)y/8+a.y);
-                var bu=tile.build.<APIBlock.APIBuild>self();
-                bu.IsStruct=true;
+                tile.build.<APIBlock.APIBuild>self().IsStruct=true;
 
 
             }
