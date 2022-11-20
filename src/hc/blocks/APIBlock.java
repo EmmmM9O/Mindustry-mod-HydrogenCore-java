@@ -19,7 +19,6 @@ public class APIBlock extends SelectBlock{
         public boolean IsPower=true;
         public boolean IsItem=false;
         public boolean IsLiquid=false;
-        @Nullable
         public Tile StructTile=new Tile(1,1);
         @Nullable
         public Liquid liquid;
@@ -61,7 +60,7 @@ public class APIBlock extends SelectBlock{
                     ui.hide();
                     ShowUi();
                 }).row();
-                if (StructTile==null||StructTile.build==null){
+                if (StructTile.build==null){
                     ui.cont.add("Structure Is Null");
                 }
                 else if (IsPower) {
