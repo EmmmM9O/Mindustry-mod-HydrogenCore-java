@@ -26,7 +26,7 @@ public class APIBlock extends SelectBlock{
             if (inoutMode&&!IsPower)
                 Draw.rect(Core.atlas.find("hc-input"),x,y,8,8);
             else if(!IsPower)Draw.rect(Core.atlas.find("hc-output"),x,y,8,8);
-            if (IsPower)  Draw.rect(Core.atlas.find("hc-power"),x+,y+,8,8);
+            if (IsPower)  Draw.rect(Core.atlas.find("hc-power"),x,y,8,8);
             else if(IsItem&&item!=null) Draw.rect(item.uiIcon,x+1,y+1,6,6);
             else if(liquid!=null)Draw.rect(liquid.uiIcon,x+1,y+1,5,5);
 
@@ -38,21 +38,21 @@ public class APIBlock extends SelectBlock{
                     IsItem=true;
                     IsPower=false;
                     IsLiquid=false;
-                    ui::hide;
+                    ui.hide();
                     ShowUi();
                 });
                 ui.button("Liquid",()->{
                     IsItem=false;
                     IsPower=false;
                     IsLiquid=true;
-                    ui::hide;
+                    ui.hide();
                     ShowUi();
                 });
                 ui.button("Power",()->{
                     IsItem=false;
                     IsPower=true;
                     IsLiquid=false;
-                    ui::hide;
+                    ui.hide();
                     ShowUi();
                 }).row();
                 if (IsPower) {
