@@ -20,7 +20,7 @@ public class APIBlock extends SelectBlock{
         public boolean IsItem=false;
         public boolean IsLiquid=false;
         @Nullable
-        public Tile StructTile=new Tile();
+        public Tile StructTile=new Tile(1,1);
         @Nullable
         public Liquid liquid;
         @Nullable
