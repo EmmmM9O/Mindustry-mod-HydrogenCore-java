@@ -2,6 +2,7 @@
 package hc.blocks;
 import arc.Core;
 import arc.graphics.g2d.Draw;
+import arc.scene.style.Drawable;
 import hc.Selects;
 import hc.func.SelectFunc;
 import hc.blocks.SelectBlock;
@@ -9,6 +10,8 @@ import mindustry.type.*;
 import mindustry.ui.dialogs.BaseDialog;
 import arc.util.io.*;
 import arc.util.Nullable;
+import mindustry.world.Tile;
+
 public class APIBlock extends SelectBlock{
     public class APIBuild extends SelectBlock.SelectBuild{
         public boolean inoutMode=false;
@@ -16,6 +19,8 @@ public class APIBlock extends SelectBlock{
         public boolean IsPower=true;
         public boolean IsItem=false;
         public boolean IsLiquid=false;
+        @Nullable
+        public Tile StructTile;
         @Nullable
         public Liquid liquid;
         @Nullable
@@ -34,31 +39,47 @@ public class APIBlock extends SelectBlock{
         public void  ShowUi(){
             BaseDialog ui=new BaseDialog("UI");
             if(IsStruct){
-                ui.button("Item",()->{
+                ui.cont.background(Core.atlas.drawable("hc-通用接口"));
+                ui.cont.button("Item",()->{
                     IsItem=true;
                     IsPower=false;
                     IsLiquid=false;
                     ui.hide();
                     ShowUi();
                 });
-                ui.button("Liquid",()->{
+                ui.cont.button("Liquid",()->{
                     IsItem=false;
                     IsPower=false;
                     IsLiquid=true;
                     ui.hide();
                     ShowUi();
                 });
-                ui.button("Power",()->{
+                ui.cont.button("Power",()->{
                     IsItem=false;
                     IsPower=true;
                     IsLiquid=false;
                     ui.hide();
                     ShowUi();
                 }).row();
-                if (IsPower) {
+                if (StructTile.build==null||StructTile.cblock() instanceof IncludeBlock){
+                    ui.cont.add("Structure Is Null");
+                }
+                else if (IsPower) {
                     ui.cont.add("No choose ");
                     
                 }else if (IsItem){
+                    var bu=StructTile.build.<IncludeBlock.IncludeBuid>self();
+                    Item[] k;
+                    if (inoutMode) k=bu.InItem;
+                    else k=bu.OutItem;
+                    ui.cont.table(table -> {
+                        for (Item now : k){
+                            table.image(now.fullIcon);
+                            table.button("X",()->{
+                                item=now;
+                            });
+                        }
+                    });
 
                 }
             }else{
