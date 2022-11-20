@@ -4,8 +4,12 @@ import hc.BuildMap;
 import hc.StructB;
 import hc.hcore;
 import mindustry.Vars;
+import mindustry.gen.Building;
 import mindustry.type.*;
 import mindustry.world.Block;
+
+import java.lang.ref.Reference;
+
 import static mindustry.Vars.*;
 
 public class IncludeBlock extends StructureBlock{
@@ -30,10 +34,8 @@ public class IncludeBlock extends StructureBlock{
                     Apis[cnt]= a;
                     cnt++;
                     var tile=world.tile((int)x/8+a.x,(int)y/8+a.y);
-                    BuildMap<APIBlock.APIBuild> block=hcore.list.<APIBlock.APIBuild>get(tile).get();
-                    APIBlock.APIBuild bu=block.build.get();
+                    var bu=tile.build.<APIBlock.APIBuild>self();
                     bu.IsStruct=true;
-
 
 
                 }
@@ -45,9 +47,10 @@ public class IncludeBlock extends StructureBlock{
                 var a=Apis[i];
 
                 var tile=world.tile((int)x/8+a.x,(int)y/8+a.y);
-                BuildMap<APIBlock.APIBuild> block=hcore.list.get(tile).get();
-                APIBlock.APIBuild bu=block.build.get();
+                var bu=tile.build.<APIBlock.APIBuild>self();
                 bu.IsStruct=true;
+
+
             }
         }
 
