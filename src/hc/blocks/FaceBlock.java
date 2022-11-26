@@ -8,6 +8,7 @@ import mindustry.gen.Building;
 import mindustry.graphics.Drawf;
 import mindustry.world.Block;
 import mindustry.world.blocks.power.PowerNode;
+import mindustry.Vars;
 
 public class FaceBlock extends Block {
     public FaceBlock(String name){
