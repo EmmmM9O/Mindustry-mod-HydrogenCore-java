@@ -70,7 +70,7 @@ public class HcBlocks{
         Test1=new IncludeBlock("Test1",Need2){{
             requirements(Category.logic, with(Items.graphite, 5, Items.copper, 5));
         }};
-        e=new FackBlock("Face"){{
+        e=new FaceBlock("Face"){{
             requirements(Category.logic, with(Items.graphite, 5, Items.copper, 5));
         }};
     }
