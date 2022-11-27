@@ -80,7 +80,7 @@ public class APIBlock extends SelectBlock{
                     ui.cont.button("[]",()->Face=0).size(15f,15f);
                     ui.cont.button(">",()->Face=3).size(15f,15f);
                     ui.cont.row();
-                    ui.cont.button("<",()->Face=4).size(15f,15f);
+                    ui.cont.button("v",()->Face=4).size(15f,15f);
             }
                 else if (IsPower) {
                     ui.cont.add("No choose ");
