@@ -19,6 +19,7 @@ public class TopBlock extends SelectBlock{
         selects=new Selects[s.length+1];
         selects[0]=new Selects();
         selects[0].icon="face";
+        selects[0].run=f1;
         int cnt=0;
         for (var i : s){
             cnt++;
