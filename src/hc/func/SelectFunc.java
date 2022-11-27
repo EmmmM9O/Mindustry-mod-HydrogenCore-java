@@ -19,5 +19,5 @@ import mindustry.world.meta.*;
 import static mindustry.Vars.*;
 
 public interface SelectFunc<T>{
-    void get(T t);
+    void get(T t,Table table);
 }

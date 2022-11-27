@@ -67,7 +67,7 @@ public class SelectBlock extends DataBlock{
             for(int i=0;i<s.length;i++){
                 Selects a=s[i];
                 table.button(a.icon,()->{
-                    a.run.get(this);
+                    a.run.get(this,table);
                     SelectNow=a.icon;
                 });
                 

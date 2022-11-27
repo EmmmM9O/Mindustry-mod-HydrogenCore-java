@@ -16,15 +16,13 @@ import mindustry.world.Tile;
 
 import java.util.Vector;
 
-public class APIBlock extends SelectBlock{
-    public class APIBuild extends SelectBlock.SelectBuild{
+public class APIBlock extends TopBlock{
+    public class APIBuild extends TopBuilding{
         public boolean inoutMode=false;
-        public boolean IsFace=false;
         public boolean IsStruct =false;
         public boolean IsPower=true;
         public boolean IsItem=false;
         public boolean IsLiquid=false;
-        public Integer Face;
         public Tile StructTile=new Tile(1,1);
         @Nullable
         public Liquid liquid;
@@ -41,19 +39,13 @@ public class APIBlock extends SelectBlock{
             else if(liquid!=null)Draw.rect(liquid.uiIcon,x+1,y+1,5,5);
 
         }
-        public void AddF(Table t,String name,Integer f){
-            if (Face==f) t.button(name,()->Face=f).size(60f,60f).color(Color.orange);
-        }
+
         public void  ShowUi(){
             BaseDialog ui=new BaseDialog("UI");
             if(IsStruct){
-                ui.cont.button("face",()->{
-                    IsFace=true;
-                    ui.hide();
-                    ShowUi();
-                }).size(80f,40f);
+
                 ui.cont.button("Item",()->{
-                    IsFace=false;
+
                     IsItem=true;
                     IsPower=false;
                     IsLiquid=false;
@@ -61,7 +53,7 @@ public class APIBlock extends SelectBlock{
                     ShowUi();
                 }).size(80f,40f);
                 ui.cont.button("Liquid",()->{
-                    IsFace=false;
+
                     IsItem=false;
                     IsPower=false;
                     IsLiquid=true;
@@ -69,7 +61,7 @@ public class APIBlock extends SelectBlock{
                     ShowUi();
                 }).size(80f,40f);
                 ui.cont.button("Power",()->{
-                    IsFace=false;
+
                     IsItem=false;
                     IsPower=true;
                     IsLiquid=false;
@@ -79,24 +71,6 @@ public class APIBlock extends SelectBlock{
                 if (StructTile.build==null){
                     ui.cont.add("Structure Is Null");
                 }
-                else if (IsFace){
-                    ui.cont.table(table -> {
-
-                        table.add("Face");
-                        table.row().add(" ").size(60f,60f);
-                        table.button("^",()->Face=1).size(60f,60f);
-                        table.row();
-                        table.button("<",()->Face=2).size(60f,60f);
-                        table.button("[]",()->Face=0).size(60f,60f);
-                        table.button(">",()->Face=3).size(60f,60f);
-                        table.row();
-                        table.add(" ").size(60f,60f);
-                        table.button("v",()->Face=4).size(60f,60f);
-
-
-                    });
-
-            }
                 else if (IsPower) {
                     ui.cont.add("No choose ");
                     
@@ -152,9 +126,9 @@ public class APIBlock extends SelectBlock{
 
 
 
-    public SelectFunc<APIBuild> Change=(build)-> build.ShowUi();
+    public SelectFunc<APIBuild> Change=(build,t)-> build.ShowUi();
 
-    public SelectFunc<APIBuild> ChangeMode=(build)->{
+    public SelectFunc<APIBuild> ChangeMode=(build,t)->{
         build.inoutMode=!build.inoutMode;
         build.IsPower=false;
     };

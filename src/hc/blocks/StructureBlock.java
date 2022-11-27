@@ -81,7 +81,7 @@ public class StructureBlock extends SelectBlock{
 	    return true;
 	}
 
-	public SelectFunc<StructureBuild> BuildRun=(build)->{
+	public SelectFunc<StructureBuild> BuildRun=(build,t)->{
 	    if(ChickBuild(build)){
 	         Vars.ui.showLabel("[acid]构建成功",1,build.x,build.y);
 	        build.BuildInit();
@@ -92,7 +92,7 @@ public class StructureBlock extends SelectBlock{
 	        
 	    }
 	};
-	public SelectFunc<StructureBuild> ShowRun=(build)->{build.show=!build.show;};
+	public SelectFunc<StructureBuild> ShowRun=(build,t)->{build.show=!build.show;};
 	public StructureBlock(String name,StructB[] Need){
 	    super(name,new Selects[2]);
 		NeedBlock=Need;
