@@ -15,10 +15,12 @@ import mindustry.world.Tile;
 public class APIBlock extends SelectBlock{
     public class APIBuild extends SelectBlock.SelectBuild{
         public boolean inoutMode=false;
+        public boolean IsFace=false;
         public boolean IsStruct =false;
         public boolean IsPower=true;
         public boolean IsItem=false;
         public boolean IsLiquid=false;
+        public Integer Face;
         public Tile StructTile=new Tile(1,1);
         @Nullable
         public Liquid liquid;
@@ -38,8 +40,13 @@ public class APIBlock extends SelectBlock{
         public void  ShowUi(){
             BaseDialog ui=new BaseDialog("UI");
             if(IsStruct){
-
+                ui.cont.button("face",()->{
+                    IsFace=true;
+                    ui.hide();
+                    ShowUi();
+                });
                 ui.cont.button("Item",()->{
+                    IsFace=false;
                     IsItem=true;
                     IsPower=false;
                     IsLiquid=false;
@@ -47,6 +54,7 @@ public class APIBlock extends SelectBlock{
                     ShowUi();
                 });
                 ui.cont.button("Liquid",()->{
+                    IsFace=false;
                     IsItem=false;
                     IsPower=false;
                     IsLiquid=true;
@@ -54,6 +62,7 @@ public class APIBlock extends SelectBlock{
                     ShowUi();
                 });
                 ui.cont.button("Power",()->{
+                    IsFace=false;
                     IsItem=false;
                     IsPower=true;
                     IsLiquid=false;
@@ -63,6 +72,16 @@ public class APIBlock extends SelectBlock{
                 if (StructTile.build!=null){
                     ui.cont.add("Structure Is Null");
                 }
+                else if (IsFace){
+                    ui.cont.add("Face");
+                    ui.cont.button("^",()->Face=1).size(15f,15f);
+                    ui.cont.row();
+                    ui.cont.button("<",()->Face=2).size(15f,15f);
+                    ui.cont.button("[]",()->Face=0).size(15f,15f);
+                    ui.cont.button(">",()->Face=3).size(15f,15f);
+                    ui.cont.row();
+                    ui.cont.button("<",()->Face=4).size(15f,15f);
+            }
                 else if (IsPower) {
                     ui.cont.add("No choose ");
                     
