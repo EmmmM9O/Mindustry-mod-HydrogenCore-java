@@ -1,14 +1,14 @@
 package hc.blocks;
 
-import hc.BuildMap;
 import hc.StructB;
-import hc.hcore;
 import mindustry.Vars;
+import mindustry.game.Team;
 import mindustry.gen.Building;
 import mindustry.type.*;
-import mindustry.world.Block;
+import mindustry.world.Tile;
 
-import java.lang.ref.Reference;
+
+import java.util.Vector;
 
 import static mindustry.Vars.*;
 
@@ -16,12 +16,17 @@ public class IncludeBlock extends StructureBlock{
 
 
     public class IncludeBuild extends StructureBlock.StructureBuild{
-        public Item[] InItem;
-        public Liquid[] InLiquid;
-        public Item[] OutItem;
-        public Liquid[] OutLiquid;
+        public Vector<Item> InItem=new Vector<>();
+        public Vector<Liquid> InLiquid=new Vector<>();
+        public Vector<Item> OutItem=new Vector<>();
+        public Vector<Liquid> OutLiquid=new Vector<>();
         public StructB[] Apis;
         public int cnt;
+        @Override
+        public Building init(Tile tile, Team team, boolean shouldAdd, int rotation) {
+
+            return super.init(tile,team,shouldAdd,rotation);
+        }
         @Override
         public void BuildInit(){
             cnt=0;
@@ -57,7 +62,7 @@ public class IncludeBlock extends StructureBlock{
 
     }
     
-    public IncludeBlock(String name, StructB Need[]){
+    public IncludeBlock(String name, StructB[] Need){
         super(name,Need);
     }
 }
