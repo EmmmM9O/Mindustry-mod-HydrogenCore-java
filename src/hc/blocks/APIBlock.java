@@ -2,10 +2,10 @@
 package hc.blocks;
 import arc.Core;
 import arc.graphics.g2d.Draw;
-import arc.scene.style.Drawable;
+
 import hc.Selects;
 import hc.func.SelectFunc;
-import hc.blocks.SelectBlock;
+
 import mindustry.type.*;
 import mindustry.ui.dialogs.BaseDialog;
 import arc.util.io.*;
@@ -38,7 +38,7 @@ public class APIBlock extends SelectBlock{
         public void  ShowUi(){
             BaseDialog ui=new BaseDialog("UI");
             if(IsStruct){
-                ui.cont.background(Core.atlas.drawable("hc-通用接口"));
+
                 ui.cont.button("Item",()->{
                     IsItem=true;
                     IsPower=false;
@@ -60,23 +60,21 @@ public class APIBlock extends SelectBlock{
                     ui.hide();
                     ShowUi();
                 }).row();
-                if (StructTile.build==null){
+                if (StructTile.build!=null){
                     ui.cont.add("Structure Is Null");
                 }
                 else if (IsPower) {
                     ui.cont.add("No choose ");
                     
                 }else if (IsItem){
-                    var bu=StructTile.build.<IncludeBlock.IncludeBuid>self();
+                    var bu=StructTile.build.<IncludeBlock.IncludeBuild>self();
                     Item[] k;
                     if (inoutMode) k=bu.InItem;
                     else k=bu.OutItem;
                     ui.cont.table(table -> {
                         for (Item now : k){
                             table.image(now.fullIcon);
-                            table.button("X",()->{
-                                item=now;
-                            });
+                            table.button("X",()-> item=now);
                         }
                     });
 
@@ -107,9 +105,7 @@ public class APIBlock extends SelectBlock{
 
 
 
-    public SelectFunc<APIBuild> Change=(build)-> {
-        build.ShowUi();
-    };
+    public SelectFunc<APIBuild> Change=(build)-> build.ShowUi();
 
     public SelectFunc<APIBuild> ChangeMode=(build)->{
         build.inoutMode=!build.inoutMode;
@@ -124,5 +120,6 @@ public class APIBlock extends SelectBlock{
         selects[1]=new Selects();
         selects[1].icon="change";
         selects[1].run=Change;
+
     }
 }

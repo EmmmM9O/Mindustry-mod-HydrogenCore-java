@@ -15,7 +15,7 @@ import static mindustry.Vars.*;
 public class IncludeBlock extends StructureBlock{
 
 
-    public class IncludeBuid extends StructureBlock.StructureBuild{
+    public class IncludeBuild extends StructureBlock.StructureBuild{
         public Item[] InItem;
         public Liquid[] InLiquid;
         public Item[] OutItem;
@@ -26,15 +26,15 @@ public class IncludeBlock extends StructureBlock{
         public void BuildInit(){
             cnt=0;
             Apis=new StructB[20];
-            for(int i=0;i<NeedBlock.length;i++){
-                StructB a=NeedBlock[i];
+            for(var a:NeedBlock){
+
 
                 if(a.block=="hc-通用接口"){
 
                     Apis[cnt]= a;
                     cnt++;
                     var til=world.tile((int)x/8+a.x,(int)y/8+a.y);
-                    til.build.<APIBlock.APIBuild>self().StructTile=tile;
+                    til.build.<APIBlock.APIBuild>self().StructTile=this.tile;
                     til.build.<APIBlock.APIBuild>self().IsStruct=true;
 
 
@@ -47,7 +47,7 @@ public class IncludeBlock extends StructureBlock{
                 var a=Apis[i];
 
                 var til=world.tile((int)x/8+a.x,(int)y/8+a.y);
-                til.build.<APIBlock.APIBuild>self().StructTile=tile;
+                til.build.<APIBlock.APIBuild>self().StructTile=this.tile;
                 til.build.<APIBlock.APIBuild>self().IsStruct=true;
                 
 

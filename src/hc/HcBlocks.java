@@ -47,7 +47,6 @@ public class HcBlocks{
     public static SelectBlock sr;
     public static StructureBlock sr2;
     public static APIBlock api;
-    public static FaceBlock e;
     public static IncludeBlock Test1;
     public static void load(){
         Selects a=new Selects();
@@ -70,8 +69,6 @@ public class HcBlocks{
         Test1=new IncludeBlock("Test1",Need2){{
             requirements(Category.logic, with(Items.graphite, 5, Items.copper, 5));
         }};
-        e=new FaceBlock("Face"){{
-            requirements(Category.logic, with(Items.graphite, 5, Items.copper, 5));
-        }};
+
     }
 }
