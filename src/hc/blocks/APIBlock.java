@@ -44,7 +44,7 @@ public class APIBlock extends SelectBlock{
                     IsFace=true;
                     ui.hide();
                     ShowUi();
-                }).size(20f,10f);
+                }).size(80f,40f);
                 ui.cont.button("Item",()->{
                     IsFace=false;
                     IsItem=true;
@@ -52,7 +52,7 @@ public class APIBlock extends SelectBlock{
                     IsLiquid=false;
                     ui.hide();
                     ShowUi();
-                }).size(20f,10f);
+                }).size(80f,40f);
                 ui.cont.button("Liquid",()->{
                     IsFace=false;
                     IsItem=false;
@@ -60,7 +60,7 @@ public class APIBlock extends SelectBlock{
                     IsLiquid=true;
                     ui.hide();
                     ShowUi();
-                }).size(20f,10f);
+                }).size(80f,40f);
                 ui.cont.button("Power",()->{
                     IsFace=false;
                     IsItem=false;
@@ -68,19 +68,21 @@ public class APIBlock extends SelectBlock{
                     IsLiquid=false;
                     ui.hide();
                     ShowUi();
-                }).size(20f,10f).row();
+                }).size(80f,40f).row();
                 if (StructTile.build==null){
                     ui.cont.add("Structure Is Null");
                 }
                 else if (IsFace){
                     ui.cont.add("Face");
-                    ui.cont.button("^",()->Face=1).size(15f,15f);
+                    ui.cont.row().add(" ").size(60f,60f);
+                    ui.cont.button("^",()->Face=1).size(60f,60f);
                     ui.cont.row();
-                    ui.cont.button("<",()->Face=2).size(15f,15f);
-                    ui.cont.button("[]",()->Face=0).size(15f,15f);
-                    ui.cont.button(">",()->Face=3).size(15f,15f);
+                    ui.cont.button("<",()->Face=2).size(60f,60f);
+                    ui.cont.button("[]",()->Face=0).size(60f,60f);
+                    ui.cont.button(">",()->Face=3).size(60f,60f);
                     ui.cont.row();
-                    ui.cont.button("v",()->Face=4).size(15f,15f);
+                    ui.cont.add(" ").size(60f,60f);
+                    ui.cont.button("v",()->Face=4).size(60f,60f);
 
 
             }
