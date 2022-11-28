@@ -11,7 +11,11 @@ import mindustry.world.Tile;
 public class TopBlock extends SelectBlock{
 
     public SelectFunc<TopBuilding> f1=(b,t)->{
-        t.add(b.ChooseTable).left();
+        t.add("face");
+        var z=b.<TopBuilding>self();
+        z.ChooseTable.add("face");
+        t.add(z.ChooseTable).left();
+
     };
 
     public TopBlock(String name, Selects[] s){
