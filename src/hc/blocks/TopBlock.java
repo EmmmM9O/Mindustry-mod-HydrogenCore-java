@@ -1,5 +1,6 @@
 package hc.blocks;
 
+import arc.Core;
 import arc.graphics.Color;
 import arc.scene.ui.layout.Table;
 import hc.Selects;
@@ -13,8 +14,8 @@ public class TopBlock extends SelectBlock{
     public SelectFunc<TopBuilding> f1=(b,t)->{
         t.add("face");
         var z=b.<TopBuilding>self();
-        z.ChooseTable.add("face");
-        t.add(z.ChooseTable).left();
+
+        t.add(z.ChooseTable).right();
 
     };
 
@@ -32,7 +33,7 @@ public class TopBlock extends SelectBlock{
     }
 
     public class TopBuilding extends SelectBuild{
-        public Table ChooseTable=new Table();
+        public Table ChooseTable=new Table(Core.atlas.drawable("hc-block"));
         @Override
         public  Building init(Tile tile, Team team, boolean shouldAdd, int rotation) {
             ChooseTable.add(" ").size(60f,60f);
@@ -50,6 +51,7 @@ public class TopBlock extends SelectBlock{
             public Integer Face=0;
         public void AddF(Table t, String name, Integer f){
             if (Face==f) t.button(name,()->Face=f).size(60f,60f).color(Color.orange);
+            else t.button(name,()->Face=f).size(60f,60f).color(Color.white);
         }
 
     }
