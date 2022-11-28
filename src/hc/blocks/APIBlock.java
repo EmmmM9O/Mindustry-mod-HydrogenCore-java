@@ -135,12 +135,12 @@ public class APIBlock extends TopBlock{
 
     public APIBlock(String name) {
         super(name, new Selects[2]);
-        selects[0]=new Selects();
-        selects[0].icon="input";
-        selects[0].run=ChangeMode;
         selects[1]=new Selects();
-        selects[1].icon="change";
-        selects[1].run=Change;
+        selects[1].icon="input";
+        selects[1].run=ChangeMode;
+        selects[2]=new Selects();
+        selects[2].icon="change";
+        selects[2].run=Change;
 
     }
 }
