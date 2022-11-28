@@ -51,7 +51,7 @@ public class HcBlocks{
     public static void load(){
         Selects a=new Selects();
         a.icon="info";
-        SelectFunc<SelectBlock.SelectBuild> run=(build)->{Vars.ui.showLabel("test",10,build.x,build.y);};
+        SelectFunc<SelectBlock.SelectBuild> run=(build,t)->{Vars.ui.showLabel("test",10,build.x,build.y);};
         a.run=run;
         Selects[] se={a};
         sr= new SelectBlock("sr",se){{
